@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<TxtGeneradorService>(); 
+builder.Services.AddScoped<TxtGeneradorService>();
+builder.Services.AddHostedService<TxtGeneradorBackgroundService>();
+
 // Add services to the container.
 
 builder.Services.AddControllers();
